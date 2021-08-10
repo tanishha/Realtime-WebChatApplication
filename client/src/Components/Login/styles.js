@@ -4,24 +4,28 @@ import {
 
 const useStyles = makeStyles(() => ({
     component: {
-        display: 'flex'
     },
     dialog: {
-        padding: '65px 0 56px 56px',
+        display: "block",
+        marginTop: '19%',
+        marginLeft:"40%",
+        width:"200%"
     },
     img: {
-        margin: '50px 0 0 50px',
-        height: 264,
-        width: 264,
+        margin: '50px 50px',
+        height: "auto",
+        width: "auto",
+        alignItems:"center"
             },
     title: {
-        fontSize: 32,
+        fontSize: "2em",
         marginTop: 100,
         marginLeft:30,
         color: '#525252',
         fontFamily: 'Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif',
         fontWeight:" bold"  
     },
+    
  }));
 
 

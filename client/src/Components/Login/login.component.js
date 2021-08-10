@@ -3,6 +3,8 @@ import useStyles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Box, Typography, Tooltip } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
+import { GoogleLogin } from 'react-google-login';
+
 const stylePaper = {
   dialogPaper: {
     marginTop: "1%",
@@ -29,14 +31,20 @@ const LoginComponent = ({ classes }) => {
       >
         <Box className={style.component}>
           <Box className={style.dialog}>
-            <Typography className={style.title}>Sign in with Google</Typography>
-          </Box>
           <Tooltip
             title={<Typography color="inherit">Click Here</Typography>}
             arrow
           >
-            <img src={url} alt="QR" className={style.img} />
-          </Tooltip>
+          <GoogleLogin      
+   cookiePolicy={'single_host_origin'}
+   theme={"dark"}
+/>
+</Tooltip>
+            {/* <Typography className={style.title}>Sign in with Google</Typography> */}
+          </Box>
+          {/*  */}
+            {/* <img src={url} alt="QR" className={style.img} /> */}
+          {/*  */}
         </Box>
       </Dialog>
     </div>
