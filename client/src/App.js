@@ -1,11 +1,12 @@
-import LoginComponent from './Components/Login/login.component';
-import HeaderComponent from './Components/Header/header.component';
+import MainComponent from './Components/Main/main.component';
+import { AccountProvider } from './Context/AccountProvider';
 
 function App() {
   return (
     <div>
-     <HeaderComponent/>
-     <LoginComponent/>
+    <AccountProvider>
+     <MainComponent/>
+     </AccountProvider>
     </div>
   );
 }

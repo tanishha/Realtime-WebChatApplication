@@ -8,8 +8,7 @@ const useStyles = makeStyles(() => ({
     dialog: {
         display: "block",
         marginTop: '19%',
-        marginLeft:"40%",
-        width:"200%"
+        marginLeft:"40%"
     },
     img: {
         margin: '50px 50px',

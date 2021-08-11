@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import useStyles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import { Box, Typography, Tooltip } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
+import { AccountContext } from "../../Context/AccountProvider";
 
 const stylePaper = {
   dialogPaper: {
@@ -17,11 +18,15 @@ const stylePaper = {
     overflow: "hidden",
   },
 };
-const LoginComponent = ({ classes }) => {
-  const style = useStyles();
-  const url =
-    "https://www.outsystems.com/Forge_BL/rest/ComponentThumbnail/GetURL_ComponentThumbnail?ProjectImageId=25044";
 
+const LoginComponent = ({ classes }) => {
+  const { account, setAccount } = useContext(AccountContext);
+  const onLoginSuccess = (res) => {
+    setAccount(res.profileObj) 
+  };
+  const onLoginFailure = () => {};
+  const style = useStyles();
+  const clientId = process.env.REACT_APP_GOOGLE_KEY;
   return (
     <div>
       <Dialog
@@ -31,20 +36,15 @@ const LoginComponent = ({ classes }) => {
       >
         <Box className={style.component}>
           <Box className={style.dialog}>
-          <Tooltip
-            title={<Typography color="inherit">Click Here</Typography>}
-            arrow
-          >
-          <GoogleLogin      
-   cookiePolicy={'single_host_origin'}
-   theme={"dark"}
-/>
-</Tooltip>
-            {/* <Typography className={style.title}>Sign in with Google</Typography> */}
+            <GoogleLogin
+              clientId={clientId}
+              cookiePolicy={"single_host_origin"}
+              theme={"dark"}
+              isSignedIn={true}
+              onSuccess={onLoginSuccess}
+              onFailure={onLoginFailure}
+            />
           </Box>
-          {/*  */}
-            {/* <img src={url} alt="QR" className={style.img} /> */}
-          {/*  */}
         </Box>
       </Dialog>
     </div>
