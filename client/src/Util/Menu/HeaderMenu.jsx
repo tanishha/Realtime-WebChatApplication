@@ -73,7 +73,12 @@ function HeaderMenu() {
             handleClose();
           }}
         >
-         
+          <GoogleLogout
+            clientId={clientId}
+            buttonText="Logout"
+            onLogoutSuccess={onSignoutSuccess}
+            className={style.logout}
+          ></GoogleLogout>
         </MenuItem>
       </Menu>
     </>
