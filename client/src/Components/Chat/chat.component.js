@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import useStyles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
-import { Dialog, Box  } from "@material-ui/core";
+import { Dialog, Box } from "@material-ui/core";
+import Menu from "../Menu/menu.component";
 const stylePaper = {
   dialogPaper: {
     height: "95%",
@@ -22,18 +23,17 @@ function ChatComponent({ classes }) {
       classes={{ paper: classes.dialogPaper }}
       BackdropProps={{ style: { backgroundColor: "unset" } }}
     >
- <Box className={style.component}>
-                <Box className={style.leftComponent}>
-                    {/* <Menu/> */}
-                    Hi
-                </Box>
-                <Box className={style.rightComponent}>
-                    {/* {
+      <Box className={style.component}>
+        <Box className={style.leftComponent}>
+          <Menu />
+        </Box>
+        <Box className={style.rightComponent}>
+          {/* {
                         Object.keys(person).length  ? <ChatBox/> : <EmptyChat />
                     } */}
-                    Hello
-                </Box>
-            </Box>
+          Hello
+        </Box>
+      </Box>
     </Dialog>
   );
 }

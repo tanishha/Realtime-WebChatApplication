@@ -22,7 +22,7 @@ const stylePaper = {
 const LoginComponent = ({ classes }) => {
   const { account, setAccount } = useContext(AccountContext);
   const onLoginSuccess = (res) => {
-    setAccount(res.profileObj) 
+    setAccount(res.profileObj);
   };
   const onLoginFailure = () => {};
   const style = useStyles();
