@@ -42,7 +42,7 @@ function Header() {
   const [openDrawer, setOpenDrawer] = useState(false);
   const toggleDrawer = () => {
     setOpenDrawer(true);
-}
+  };
   return (
     <>
       <Box className={style.header}>
@@ -57,9 +57,10 @@ function Header() {
           <HeaderMenu />
         </Box>
       </Box>
-      <DrawerComponent open={openDrawer} setOpen={setOpenDrawer} 
-      // profile={true} 
-
+      <DrawerComponent
+        open={openDrawer}
+        setOpen={setOpenDrawer}
+        // profile={true}
       />
     </>
   );

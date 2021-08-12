@@ -4,6 +4,7 @@ import { GoogleLogout } from "react-google-login";
 import { MoreVert } from "@material-ui/icons";
 import { Menu, MenuItem, makeStyles } from "@material-ui/core";
 import { AccountContext } from "../../Context/AccountProvider";
+import DrawerComponent from "../../Components/Drawer/drawer.component";
 
 const useStyle = makeStyles({
   menuItem: {
@@ -31,6 +32,7 @@ function HeaderMenu() {
   };
   const clientId = process.env.REACT_APP_GOOGLE_KEY;
   const { setAccount } = useContext(AccountContext);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const onSignoutSuccess = () => {
     alert("You have been logged out successfully");
@@ -39,6 +41,9 @@ function HeaderMenu() {
     // setShowloginButton(true);
     setAccount("");
     // setPerson({});
+  };
+  const toggleDrawer = () => {
+    setOpenDrawer(true);
   };
   return (
     <>
@@ -62,7 +67,7 @@ function HeaderMenu() {
           className={style.menuItem}
           onClick={() => {
             handleClose();
-            // toggleDrawer()
+            toggleDrawer()
           }}
         >
           Profile
@@ -81,6 +86,11 @@ function HeaderMenu() {
           ></GoogleLogout>
         </MenuItem>
       </Menu>
+      <DrawerComponent
+        open={openDrawer}
+        setOpen={setOpenDrawer}
+        // profile={true}
+      />
     </>
   );
 }
