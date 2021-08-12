@@ -5,6 +5,7 @@ import { Chat as MessageIcon } from "@material-ui/icons";
 import { AccountContext } from "../../Context/AccountProvider";
 
 import HeaderMenu from "./HeaderMenu";
+import DrawerComponent from "../../Components/Drawer/drawer.component";
 
 const useStyles = makeStyles({
   header: {
@@ -38,14 +39,17 @@ const useStyles = makeStyles({
 function Header() {
   const style = useStyles();
   const { account } = useContext(AccountContext);
-
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const toggleDrawer = () => {
+    setOpenDrawer(true);
+}
   return (
     <>
       <Box className={style.header}>
         <img
           src={account.imageUrl}
           className={style.avatar}
-          // onClick={() => toggleDrawer()}
+          onClick={() => toggleDrawer()}
           alt="dp"
         />
         <Box className={style.chatIcons}>
@@ -53,7 +57,10 @@ function Header() {
           <HeaderMenu />
         </Box>
       </Box>
-      {/* <InfoDrawer open={openDrawer} setOpen={setOpenDrawer} profile={true} /> */}
+      <DrawerComponent open={openDrawer} setOpen={setOpenDrawer} 
+      // profile={true} 
+
+      />
     </>
   );
 }

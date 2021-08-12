@@ -1,12 +1,15 @@
-import MainComponent from './Components/Main/main.component';
-import { AccountProvider } from './Context/AccountProvider';
+import MainComponent from "./Components/Main/main.component";
+import { AccountProvider } from "./Context/AccountProvider";
+import TemplateProvider from "./Context/TemplateProvider";
 
 function App() {
   return (
     <div>
-    <AccountProvider>
-     <MainComponent/>
-     </AccountProvider>
+      <TemplateProvider>
+        <AccountProvider>
+          <MainComponent />
+        </AccountProvider>
+      </TemplateProvider>
     </div>
   );
 }
