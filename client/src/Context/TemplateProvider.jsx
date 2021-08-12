@@ -3,7 +3,7 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const TemplateContext = React.createContext(null);
 
-export const TemplateProvider = ({ children }) => {
+const TemplateProvider = ({ children }) => {
     const theme = createMuiTheme({
         overrides: {
             MuiDrawer: {
@@ -27,4 +27,4 @@ export const TemplateProvider = ({ children }) => {
     );
 }
 
-export default TemplateProvider;
+export { TemplateProvider, TemplateContext };

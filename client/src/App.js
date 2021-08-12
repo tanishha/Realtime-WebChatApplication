@@ -1,6 +1,6 @@
 import MainComponent from "./Components/Main/main.component";
 import { AccountProvider } from "./Context/AccountProvider";
-import TemplateProvider from "./Context/TemplateProvider";
+import {TemplateProvider} from "./Context/TemplateProvider";
 
 function App() {
   return (
