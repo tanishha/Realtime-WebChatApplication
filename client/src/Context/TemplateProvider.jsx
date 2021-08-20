@@ -1,10 +1,10 @@
 import React from 'react';
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-
+import { ThemeProvider } from "@material-ui/core/styles";
+import { createTheme } from '@material-ui/core/styles'
 const TemplateContext = React.createContext(null);
 
 const TemplateProvider = ({ children }) => {
-    const theme = createMuiTheme({
+    const theme = createTheme({
         overrides: {
             MuiDrawer: {
                 paperAnchorLeft: {
@@ -19,7 +19,7 @@ const TemplateProvider = ({ children }) => {
     });
 
     return (
-        <TemplateContext.Provider>
+        <TemplateContext.Provider value>
             <ThemeProvider theme={theme}>
                 {children}
             </ThemeProvider>

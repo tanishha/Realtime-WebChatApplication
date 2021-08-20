@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext } from "react";
 import useStyles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
@@ -5,7 +6,7 @@ import { Box } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
 import { AccountContext } from "../../Context/AccountProvider";
-
+import { addUser } from "../../Util/httpClient";
 const stylePaper = {
   dialogPaper: {
     marginTop: "1%",
@@ -21,8 +22,9 @@ const stylePaper = {
 
 const LoginComponent = ({ classes }) => {
   const { account, setAccount } = useContext(AccountContext);
-  const onLoginSuccess = (res) => {
+  const onLoginSuccess = async (res) => {
     setAccount(res.profileObj);
+   await addUser(res.profileObj)
   };
   const onLoginFailure = () => {};
   const style = useStyles();
