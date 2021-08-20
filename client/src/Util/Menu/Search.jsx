@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Search = () => {
+const Search = ({setText}) => {
     const style = useStyles();
 
     return (
@@ -53,7 +53,7 @@ const Search = () => {
                 input: style.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-            //   onChange={(e) => setText(e.target.value)}
+              onChange={(e) => setText(e.target.value)}
             />
           </Box>
         </Box>
