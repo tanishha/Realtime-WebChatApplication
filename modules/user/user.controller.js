@@ -25,7 +25,12 @@ async function addUser(req, res, next) {
 }
 
 async function getUsers(req, res, next) {
-
+    try {
+        const user = await usermodel.find({});
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json(error);
+    }
 }
 
 module.exports = {
