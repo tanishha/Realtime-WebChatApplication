@@ -24,7 +24,7 @@ async function addUser(req, res, next) {
     }
 }
 
-async function getUsers(req, res, next) {
+async function getUsers(req, res) {
     try {
         const user = await usermodel.find({});
         res.status(200).json(user);
