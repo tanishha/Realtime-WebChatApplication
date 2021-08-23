@@ -27,7 +27,7 @@ export const setConversation = async (data) => {
   }
 };
 
-export const getConversation = async (users) => {
+export const getConversations = async (users) => {
   try {
     let response = await axios.post(`${BaseURL}/api/conversation`, users);
     return response.data;

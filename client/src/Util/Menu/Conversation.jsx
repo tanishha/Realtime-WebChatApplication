@@ -4,6 +4,7 @@ import { makeStyles, Box, Typography } from "@material-ui/core";
 
 // import { UserContext } from '../../Context/UserProvider';
 import { AccountContext } from "../../Context/AccountProvider";
+import { setConversation } from '../httpClient';
 const useStyles = makeStyles({
     component: {
         height: 40,
@@ -35,10 +36,14 @@ const useStyles = makeStyles({
 })
 function Conversation({user}) {
     const style = useStyles();
-
+    const { account }  = useContext(AccountContext);
+    const getUser = async () => {
+        // setPerson(user);
+        await setConversation({ senderId: account.googleId,receiverId:user.googleId});
+    }
     return (
         <Box className={style.component} 
-        // onClick={() => getUser()}
+        onClick={() => getUser()}
         >
             <Box>
                 <img src={user.imageUrl} alt="display picture" className={style.displayPicture} />
