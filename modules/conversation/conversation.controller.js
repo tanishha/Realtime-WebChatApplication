@@ -31,7 +31,14 @@ async function setConversation(req, res, next) {
 
 async function getConversations(req, res) {
     try {
-
+        let senderId = req.body.senderId;
+        let receiverId = req.body.receiverId
+        let convo = await convomodel.findOne({
+            members: {
+                $all: [receiverId, senderId]
+            }
+        })
+        res.status(200).json(conversation);
     } catch (error) {
         res.status(500).json(error);
     }
