@@ -38,7 +38,7 @@ async function getConversations(req, res) {
                 $all: [receiverId, senderId]
             }
         })
-        res.status(200).json(conversation);
+        res.status(200).json(convo);
     } catch (error) {
         res.status(500).json(error);
     }
