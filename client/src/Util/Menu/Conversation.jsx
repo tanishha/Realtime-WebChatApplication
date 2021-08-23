@@ -2,9 +2,9 @@
 import { useContext, useEffect, useState } from 'react'
 import { makeStyles, Box, Typography } from "@material-ui/core";
 
-// import { UserContext } from '../../Context/UserProvider';
+import { UserContext } from '../../Context/UserProvider';
 import { AccountContext } from "../../Context/AccountProvider";
-import { setConversation } from '../httpClient';
+import { setConversation, getConversation  } from '../httpClient';
 const useStyles = makeStyles({
     component: {
         height: 40,
@@ -37,8 +37,10 @@ const useStyles = makeStyles({
 function Conversation({user}) {
     const style = useStyles();
     const { account }  = useContext(AccountContext);
+    const { setPerson } = useContext(UserContext);
+
     const getUser = async () => {
-        // setPerson(user);
+        setPerson(user);  //stores information of user
         await setConversation({ senderId: account.googleId,receiverId:user.googleId});
     }
     return (

@@ -3,6 +3,7 @@ import useStyles from "./styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Dialog, Box } from "@material-ui/core";
 import Menu from "../Menu/menu.component";
+import ChatBox from "../../Util/Chat/ChatBox";
 const stylePaper = {
   dialogPaper: {
     height: "95%",
@@ -31,7 +32,7 @@ function ChatComponent({ classes }) {
           {/* {
                         Object.keys(person).length  ? <ChatBox/> : <EmptyChat />
                     } */}
-          Hello
+                    <ChatBox/>
         </Box>
       </Box>
     </Dialog>
