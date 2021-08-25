@@ -51,7 +51,7 @@ const Footer = ({ sendText, value, setValue }) => {
             <Box className={style.search}>
                 <InputBase
                     placeholder="Type a message"
-                    style={{
+                    classes={{
                         root: style.inputRoot,
                         input: style.inputInput,
                     }}
