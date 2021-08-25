@@ -29,7 +29,7 @@ export const setConversation = async (data) => {
 
 export const getConversations = async (users) => {
   try {
-    let response = await axios.post(`${BaseURL}/api/conversation`, users);
+    let response = await axios.post(`${BaseURL}/api/conversation/fetch`, users);
     return response.data;
   } catch (error) {
     console.log("Error", error);

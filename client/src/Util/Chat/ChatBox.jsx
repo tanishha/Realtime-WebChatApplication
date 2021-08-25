@@ -13,7 +13,7 @@ function ChatBox() {
     const [conversation, setConversation] = useState({});
     useEffect(() => {
       const getConversationDetails = async () => {
-          let data = await getConversations({ sender: account.googleId, receiver: person.googleId });
+          let data = await getConversations({ senderId: account.googleId, receiverId: person.googleId });
           setConversation(data);
       }
       getConversationDetails();
