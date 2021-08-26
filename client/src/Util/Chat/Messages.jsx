@@ -1,7 +1,7 @@
 import { Box, makeStyles } from "@material-ui/core";
 import { useState, useEffect, useContext, useRef } from "react";
 import { AccountContext } from "../../Context/AccountProvider";
-import { newMessages,getMessages } from "../httpClient";
+import { newMessages, getMessages } from "../httpClient";
 
 import Footer from "./Footer";
 const useStyles = makeStyles({
@@ -35,7 +35,7 @@ function Messages({ person, conversation }) {
     if (code === 13) {
       //enter key
       let message = {
-        sender: account.googleId,  //for UI
+        sender: account.googleId, //for UI
         conversationId: conversation._id,
         text: value,
       };
@@ -48,8 +48,8 @@ function Messages({ person, conversation }) {
 
       await newMessages(message);
 
-      setValue('');
-    //   setNewMessageFlag(prev => !prev);
+      setValue(""); //to clear input section
+      //   setNewMessageFlag(prev => !prev);
     }
   };
   return (

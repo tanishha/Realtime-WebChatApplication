@@ -1,7 +1,6 @@
 const Mongoose = require("mongoose");
 
-const UserSchema = new Mongoose.Schema(
-  {
+const UserSchema = new Mongoose.Schema({
     googleId: {
         type: String,
         required: true
@@ -26,8 +25,8 @@ const UserSchema = new Mongoose.Schema(
         type: String,
         required: true
     }
-  },
-  { timestamps: true }
-);
+}, {
+    timestamps: true
+});
 
 module.exports = Mongoose.model("UserModel", UserSchema);

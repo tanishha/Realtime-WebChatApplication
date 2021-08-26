@@ -22,9 +22,9 @@ app.use(express.urlencoded({
 app.use(express.json()) //(for json)
 app.get('/', function (req, res) {
     res.json({
-        msg:"Hello"
+        msg: "Hello"
     })
-  });
+});
 //load routing level middleware(mount)
 app.use('/api', apiRoute)
 app.use(function (req, res, next) { //for undefined request

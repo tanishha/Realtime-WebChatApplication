@@ -1,7 +1,7 @@
 const Mongoose = require("mongoose");
 
 const ConversationSchema = new Mongoose.Schema({
-    members: {   //sender and receiver
+    members: { //sender and receiver
         type: Array
     },
     message: {
