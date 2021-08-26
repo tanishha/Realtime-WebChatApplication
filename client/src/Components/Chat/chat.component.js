@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { Dialog, Box } from "@material-ui/core";
 import Menu from "../Menu/menu.component";
 import ChatBox from "../../Util/Chat/ChatBox";
+import EmptyChat from "../../Util/Chat/EmptyChat";
+import { UserContext } from "../../Context/UserProvider";
 const stylePaper = {
   dialogPaper: {
     height: "95%",
@@ -17,6 +19,7 @@ const stylePaper = {
 };
 function ChatComponent({ classes }) {
   const style = useStyles();
+  const { person } = useContext(UserContext);
 
   return (
     <Dialog
@@ -29,10 +32,8 @@ function ChatComponent({ classes }) {
           <Menu />
         </Box>
         <Box className={style.rightComponent}>
-          {/* {
-                        Object.keys(person).length  ? <ChatBox/> : <EmptyChat />
-                    } */}
-                    <ChatBox/>
+          {Object.keys(person).length ? <ChatBox /> : <EmptyChat />}{" "}
+          {/* //check if person has value or not */}
         </Box>
       </Box>
     </Dialog>

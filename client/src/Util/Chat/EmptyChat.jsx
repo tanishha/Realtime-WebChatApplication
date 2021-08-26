@@ -14,14 +14,14 @@ const useStyle = makeStyles({
     width: 320,
   },
   title: {
-    fontSize: 36,
-    fontWeight: 300,
+    fontSize: 56,
+    fontWeight: 500,
     color: "#525252",
-    marginTop: 25,
+    marginTop: 200,
   },
   subTitle: {
     marginTop: 10,
-    fontSize: 14,
+    fontSize: 34,
     color: "rgba(0, 0, 0, 0.45)",
   },
   divider: {
@@ -31,13 +31,9 @@ const useStyle = makeStyles({
 
 const EmptyChat = () => {
   const style = useStyle();
-  const imageurl =
-    "https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg";
-
   return (
     <Box className={style.component}>
       <Box className={style.container}>
-        <img src={imageurl} alt="dp" className={style.image} />
         <Typography className={style.title}>Hello!!</Typography>
         <Typography className={style.subTitle}>Start Conversation</Typography>
         <Divider className={style.divider} />
