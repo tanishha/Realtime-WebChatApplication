@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { Box, makeStyles } from "@material-ui/core";
 import { useState, useEffect, useContext, useRef } from "react";
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
   },
   component: {
     height: "79vh",
-    overflowY: "scroll",  //scroll on overflow
+    overflowY: "scroll", //scroll on overflow
   },
   container: {
     padding: "1px 80px",
@@ -28,20 +29,22 @@ const useStyles = makeStyles({
 function Messages({ person, conversation }) {
   const style = useStyles();
   const [value, setValue] = useState();
-  const { account, socket, newMessageFlag, setNewMessageFlag  } = useContext(AccountContext);
+  const { account, socket, newMessageFlag, setNewMessageFlag } =
+    useContext(AccountContext);
   const [messages, setMessages] = useState([]);
   const [incomingMessage, setIncomingMessage] = useState(null);
+  const scrollRef = useRef();
 
   useEffect(() => {
-        
-        socket.current.on('getMessage', data => {
-            setIncomingMessage({
-                sender: data.senderId,
-                text: data.text,
-                createdAt: Date.now()
-            })
-        })
-    }, []);
+    socket.current.on("getMessage", (data) => {
+      setIncomingMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
   useEffect(() => {
     const getMessageDetails = async () => {
       let data = await getMessages(conversation._id);
@@ -49,15 +52,20 @@ function Messages({ person, conversation }) {
     };
     getMessageDetails();
   }, [conversation?._id, person._id, newMessageFlag]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ transition: "smooth" });
+  }, [messages]);
+
   const receiverId = conversation?.members?.find(
     (member) => member !== account.googleId //to distinguish between sender and receiver use find
   );
 
   useEffect(() => {
-        incomingMessage && conversation?.members?.includes(incomingMessage.sender) && 
-            setMessages((prev) => [...prev, incomingMessage]);
-        
-    }, [incomingMessage, conversation]);
+    incomingMessage &&
+      conversation?.members?.includes(incomingMessage.sender) &&
+      setMessages((prev) => [...prev, incomingMessage]);
+  }, [incomingMessage, conversation]);
   const sendText = async (e) => {
     let code = e.keyCode || e.which; //to check which key is pressed
     if (!value) return;
@@ -79,7 +87,7 @@ function Messages({ person, conversation }) {
       await newMessages(message);
 
       setValue(""); //to clear input section
-        setNewMessageFlag(prev => !prev);  //negate the previous value
+      setNewMessageFlag((prev) => !prev); //negate the previous value
     }
   };
   return (
