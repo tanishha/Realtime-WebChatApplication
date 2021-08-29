@@ -1,5 +1,8 @@
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { Search, MoreVert } from "@material-ui/icons";
+import { useContext } from 'react';
+
+import { AccountContext } from "../../Context/AccountProvider";
 
 const useStyles = makeStyles({
   header: {
@@ -36,6 +39,7 @@ const useStyles = makeStyles({
 
 function ChatHeader({ person }) {
   const style = useStyles();
+  const { activeUsers } = useContext(AccountContext);
 
   return (
     <Box className={style.header}>
@@ -43,7 +47,7 @@ function ChatHeader({ person }) {
       <Box>
         <Typography className={style.name}>{person.name}</Typography>
         <Typography className={style.status}>
-          {/* {activeUsers?.find(user => user.userId === person.googleId) ? 'Online' : 'Offline'} */}
+          {activeUsers?.find(user => user.userId === person.googleId) ? 'Online' : 'Offline'}
         </Typography>
       </Box>
       <Box className={style.rightContainer}>

@@ -17,10 +17,10 @@ module.exports = (server) => {
                 socketId
             });
     }
-    // const getUser = (userId) => {
-    //     console.log(users);
-    //     return users.find(user => user.userId === userId);
-    // }
+    const getUser = (userId) => {
+        console.log(users);
+        return users.find(user => user.userId === userId);
+    }
     io.on("connection", (client) => { //function is called for each new user and dedicated connection is created for each user
         console.log("Socket is active to be connected")
         //connect
