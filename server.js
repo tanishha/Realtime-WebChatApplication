@@ -45,11 +45,7 @@ app.use(function (err, req, res, next) {
         })
 })
 
-app.listen(7070, function (err, done) {
-    if (err) {
-        console.log('Server failed to connect');
+const server = require('http').createServer(app)
 
-    } else {
-        console.log('Server connected to 7070');
-    }
-})
+//socket stuff
+require('./socket')(server)
