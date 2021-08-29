@@ -11,6 +11,7 @@ function AccountProvider({ children }) {
 
   const [account, setAccount] = useState();
   const [newMessageFlag, setNewMessageFlag] = useState(false);
+  const [getMessageFlag, setgetMessageFlag] = useState(false);
 
   const [activeUsers, setActiveUsers] = useState([]);
 
@@ -24,6 +25,8 @@ function AccountProvider({ children }) {
         newMessageFlag,
         setNewMessageFlag,
         setActiveUsers,
+        getMessageFlag,
+        setgetMessageFlag,
       }}
     >
       {children}

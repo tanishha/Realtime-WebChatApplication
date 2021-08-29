@@ -29,8 +29,14 @@ const useStyles = makeStyles({
 function Messages({ person, conversation }) {
   const style = useStyles();
   const [value, setValue] = useState();
-  const { account, socket, newMessageFlag, setNewMessageFlag } =
-    useContext(AccountContext);
+  const {
+    account,
+    socket,
+    newMessageFlag,
+    setNewMessageFlag,
+    getMessageFlag,
+    setgetMessageFlag,
+  } = useContext(AccountContext);
   const [messages, setMessages] = useState([]);
   const [incomingMessage, setIncomingMessage] = useState(null);
   const scrollRef = useRef();
@@ -43,6 +49,7 @@ function Messages({ person, conversation }) {
         createdAt: Date.now(),
       });
     });
+    setgetMessageFlag((prev) => !prev);
   }, []);
 
   useEffect(() => {
@@ -51,7 +58,7 @@ function Messages({ person, conversation }) {
       setMessages(data);
     };
     getMessageDetails();
-  }, [conversation?._id, person._id, newMessageFlag]);
+  }, [conversation?._id, person._id, newMessageFlag, getMessageFlag]);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ transition: "smooth" });
@@ -95,10 +102,7 @@ function Messages({ person, conversation }) {
       <Box className={style.component}>
         {messages &&
           messages.map((message) => (
-            <Box
-              className={style.container}
-              ref={scrollRef}
-            >
+            <Box className={style.container} ref={scrollRef}>
               <Message message={message} />
             </Box>
           ))}

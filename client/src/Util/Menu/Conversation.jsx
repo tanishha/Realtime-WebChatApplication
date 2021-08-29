@@ -37,7 +37,8 @@ const useStyles = makeStyles({
 });
 function Conversation({ user }) {
   const style = useStyles();
-  const { account, newMessageFlag } = useContext(AccountContext);
+  const { account, newMessageFlag, getMessageFlag } =
+    useContext(AccountContext);
   const { setPerson } = useContext(UserContext);
   const [message, setMessage] = useState({});
 
@@ -47,10 +48,10 @@ function Conversation({ user }) {
         senderId: account.googleId,
         receiverId: user.googleId,
       });
-      setMessage({ text: data.message, timestamp: data.updatedAt });
+      setMessage({ texts: data.message, timestamp: data.updatedAt });
     };
     getConversationMessage();
-  }, [newMessageFlag]);
+  }, [newMessageFlag, getMessageFlag]);
   const getUser = async () => {
     setPerson(user); //stores information of user
     await setConversation({
@@ -79,7 +80,7 @@ function Conversation({ user }) {
           </Typography>
         </Box>
         <Box>
-          <Typography className={style.text}>{message.text}</Typography>
+          <Typography className={style.text}>{message.texts}</Typography>
         </Box>
       </Box>
     </Box>
