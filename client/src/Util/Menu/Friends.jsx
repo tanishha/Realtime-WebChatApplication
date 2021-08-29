@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useContext } from "react";
-import { Box, makeStyles, Divider } from "@material-ui/core";
+import { Box, makeStyles, Divider, Typography } from "@material-ui/core";
 import { AccountContext } from "../../Context/AccountProvider";
 import Conversation from "./Conversation";
 
@@ -13,6 +13,13 @@ const useStyles = makeStyles({
   divider: {
     margin: "0 0 0 67px",
     backgroundColor: "#F2F2F2",
+  },
+  text: {
+    display: "block",
+    color: "rgba(0, 0, 0, 0.6)",
+    fontSize: 14,
+    textAlign:'center',
+    marginBottom:0
   },
 });
 
@@ -53,6 +60,8 @@ function Friends({ text }) {
               </>
             )
         )}
+        <br/>
+        <Typography className={style.text}>Refresh to add friends</Typography>
     </Box>
   );
 }

@@ -48,10 +48,11 @@ function Conversation({ user }) {
         senderId: account.googleId,
         receiverId: user.googleId,
       });
+      if(!data) return console.log("data")
       setMessage({ texts: data.message, timestamp: data.updatedAt });
     };
     getConversationMessage();
-  }, [newMessageFlag, getMessageFlag]);
+  }, [newMessageFlag||getMessageFlag]);
   const getUser = async () => {
     setPerson(user); //stores information of user
     await setConversation({
