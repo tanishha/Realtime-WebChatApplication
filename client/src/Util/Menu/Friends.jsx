@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useContext } from "react";
 import { Box, makeStyles, Divider } from "@material-ui/core";
 import { AccountContext } from "../../Context/AccountProvider";
 import Conversation from "./Conversation";
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 function Friends({ text }) {
   const style = useStyles();
   const [users, setUsers] = useState([]);
-  const { account } = useContext(AccountContext);
+  const { account, socket, setActiveUsers } = useContext(AccountContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -30,6 +31,14 @@ function Friends({ text }) {
     };
     getData();
   }, [text]);
+  useEffect(() => {
+    //send user's info to backend
+    socket.current.emit("addUser", account.googleId); //send
+    socket.current.on("getUsers", (users) => {
+      //fetch
+      setActiveUsers(users);
+    });
+  }, [account]);
   return (
     <Box className={style.component}>
       {users &&
