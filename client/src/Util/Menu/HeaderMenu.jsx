@@ -67,7 +67,7 @@ function HeaderMenu() {
           className={style.menuItem}
           onClick={() => {
             handleClose();
-            toggleDrawer()
+            toggleDrawer();
           }}
         >
           Profile

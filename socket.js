@@ -46,8 +46,8 @@ module.exports = (server) => {
         //disconnect
         client.on('disconnect', () => {
             console.log('user disconnected');
-            removeUser(socket.id);
-            io.emit('getUsers', users);
+            removeUser(client.id);
+            io.emit('getUsers', users);  //return remaining users
         })
     })
 }
