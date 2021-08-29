@@ -97,7 +97,7 @@ function Messages({ person, conversation }) {
           messages.map((message) => (
             <Box
               className={style.container}
-              // ref={scrollRef}
+              ref={scrollRef}
             >
               <Message message={message} />
             </Box>

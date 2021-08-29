@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Box } from "@material-ui/core";
 
 //components
@@ -7,13 +7,13 @@ import Search from "../../Util/Menu/Search";
 import Friends from "../../Util/Menu/Friends";
 
 const Menu = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   return (
     <Box>
       <Box>
         <Header />
-        <Search setText={setText}/>
-        <Friends text={text}/>
+        <Search setText={setText} />
+        <Friends text={text} />
       </Box>
     </Box>
   );

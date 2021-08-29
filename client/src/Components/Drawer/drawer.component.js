@@ -14,8 +14,9 @@ function DrawerComponent({ open, setOpen }) {
         <ArrowBack onClick={() => setOpen(false)} />
         <Typography>Profile</Typography>
       </Box>
-      <Box className={style.component}>{/* { profile && <Profile /> } */}
-      <Profile/>
+      <Box className={style.component}>
+        {/* { profile && <Profile /> } */}
+        <Profile />
       </Box>{" "}
     </Drawer>
   );

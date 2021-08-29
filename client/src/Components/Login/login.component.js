@@ -24,7 +24,7 @@ const LoginComponent = ({ classes }) => {
   const { account, setAccount } = useContext(AccountContext);
   const onLoginSuccess = async (res) => {
     setAccount(res.profileObj);
-   await addUser(res.profileObj)
+    await addUser(res.profileObj);
   };
   const onLoginFailure = () => {};
   const style = useStyles();
