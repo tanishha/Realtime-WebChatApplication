@@ -2,7 +2,7 @@ import { Box, makeStyles } from "@material-ui/core";
 import { useState, useEffect, useContext, useRef } from "react";
 import { AccountContext } from "../../Context/AccountProvider";
 import { newMessages, getMessages } from "../httpClient";
-import Message from './Message'
+import Message from "./Message";
 
 import Footer from "./Footer";
 const useStyles = makeStyles({
@@ -27,16 +27,19 @@ const useStyles = makeStyles({
 function Messages({ person, conversation }) {
   const style = useStyles();
   const [value, setValue] = useState();
-  const { account } = useContext(AccountContext);
+  const { account, socket } = useContext(AccountContext);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const getMessageDetails = async () => {
-        let data = await getMessages(conversation._id);
-        setMessages(data);
-    }
+      let data = await getMessages(conversation._id);
+      setMessages(data);
+    };
     getMessageDetails();
-}, [conversation?._id]);
+  }, [conversation?._id]);
+  const receiverId = conversation?.members?.find(
+    (member) => member !== account.googleId //to distinguish between sender and receiver use find
+  );
 
   const sendText = async (e) => {
     let code = e.keyCode || e.which; //to check which key is pressed
@@ -50,11 +53,11 @@ function Messages({ person, conversation }) {
         text: value,
       };
 
-      // socket.current.emit('sendMessage', {
-      //     senderId: account.googleId,
-      //     receiverId,
-      //     text: value
-      // })
+      socket.current.emit("sendMessage", {
+        senderId: account.googleId,
+        receiverId,
+        text: value,
+      });
 
       await newMessages(message);
 
@@ -65,15 +68,15 @@ function Messages({ person, conversation }) {
   return (
     <Box className={style.wrapper}>
       <Box className={style.component}>
-        {
-                    messages && messages.map(message => (
-                        <Box className={style.container} 
-                        // ref={scrollRef}
-                        >
-                            <Message message={message} />
-                        </Box>
-                    ))
-                }
+        {messages &&
+          messages.map((message) => (
+            <Box
+              className={style.container}
+              // ref={scrollRef}
+            >
+              <Message message={message} />
+            </Box>
+          ))}
       </Box>
       <Footer sendText={sendText} value={value} setValue={setValue} />
     </Box>
