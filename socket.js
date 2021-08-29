@@ -17,7 +17,7 @@ module.exports = (server) => {
                 socketId
             });
     }
-    const getUser = (userId) => {
+    const getUsers = (userId) => {
         console.log(users);
         return users.find(user => user.userId === userId);
     }
@@ -35,7 +35,7 @@ module.exports = (server) => {
             receiverId,
             text
         }) => {
-            const user = getUser(receiverId); 
+            const user = getUsers(receiverId); 
             io.to(user.socketId).emit('getMessage', {
                 senderId,
                 text

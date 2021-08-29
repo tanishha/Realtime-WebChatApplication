@@ -10,11 +10,22 @@ function AccountProvider({ children }) {
   }, []);
 
   const [account, setAccount] = useState();
+  const [newMessageFlag, setNewMessageFlag] = useState(false);
+
   const [activeUsers, setActiveUsers] = useState([]);
 
   return (
-    <AccountContext.Provider value={{ account, setAccount, socket, activeUsers,
-            setActiveUsers, }}>
+    <AccountContext.Provider
+      value={{
+        account,
+        setAccount,
+        socket,
+        activeUsers,
+        newMessageFlag,
+        setNewMessageFlag,
+        setActiveUsers,
+      }}
+    >
       {children}
     </AccountContext.Provider>
   );
