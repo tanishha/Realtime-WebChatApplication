@@ -8,8 +8,8 @@ module.exports = (server) => {
     })
     let users = [];
 
-    io.on("connection", (client) => {  //function is called for each new user and dedicated connection is created for each user
-        console.log("Socket is active to be connected")  
+    io.on("connection", (client) => { //function is called for each new user and dedicated connection is created for each user
+        console.log("Socket is active to be connected")
         client.on("new_msg", (payload) => {
             client.emit('reply-msg', payload)
         })
